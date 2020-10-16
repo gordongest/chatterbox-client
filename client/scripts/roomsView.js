@@ -5,6 +5,7 @@ var RoomsView = {
 
   initialize: function() {
     // todo
+    $('#rooms button').click(Rooms.add());
   },
 
   render: _.template(`
