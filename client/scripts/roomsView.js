@@ -13,7 +13,8 @@ var RoomsView = {
 
   renderRoom: function(room) {
     var roomObj = {roomName: room};
-    $(RoomsView.render(roomObj)).appendTo(RoomsView.$select);
+    var renderedRoom = RoomsView.render(roomObj)
+    $(renderedRoom).appendTo(RoomsView.$select);
   }
 
 };
