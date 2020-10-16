@@ -4,9 +4,17 @@ var RoomsView = {
   $select: $('#rooms select'),
 
   initialize: function() {
+    // todo
   },
 
-  render: function() {
+  render: _.template(`
+    <option value="<%- roomName %>"><%- roomName %></option>
+  `),
+
+  renderRoom: function(room) {
+    var roomObj = {roomName: room};
+    $(RoomsView.render(roomObj)).appendTo(RoomsView.$select);
   }
 
 };
+
