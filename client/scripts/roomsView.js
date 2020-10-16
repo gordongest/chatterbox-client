@@ -4,7 +4,6 @@ var RoomsView = {
   $select: $('#rooms select'),
 
   initialize: function() {
-    // todo
     $('#rooms button').click(Rooms.add());
   },
 

@@ -2,18 +2,18 @@ var FormView = {
 
   $form: $('form'),
 
-  initialize: function() {
+  initialize: () => {
     FormView.$form.on('submit', FormView.handleSubmit);
   },
 
-  handleSubmit: function(event) {
+  handleSubmit: (event) => {
     // Stop the browser from submitting the form
     event.preventDefault();
     $('.submit').click(Parse.create());
     console.log('click!');
   },
 
-  setStatus: function(active) {
+  setStatus: (active) => {
     var status = active ? 'true' : null;
     FormView.$form.find('input[type=submit]').attr('disabled', status);
   }

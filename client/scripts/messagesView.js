@@ -3,7 +3,7 @@ var MessagesView = {
   $chats: $('#chats'),
 
   initialize: function() {
-
+    // todo
   },
 
   renderMessage: function(message) {

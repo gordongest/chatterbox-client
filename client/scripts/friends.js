@@ -5,7 +5,7 @@ var Friends = {
   },
 
   toggleStatus: function(event) {
-
+    // todo
   }
 
 };
