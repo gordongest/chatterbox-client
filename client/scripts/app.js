@@ -1,10 +1,9 @@
 var App = {
 
   $spinner: $('.spinner img'),
+  username: 'gerf',
 
-  username: 'anonymous',
-
-  initialize: function() {
+  initialize: () => {
     App.username = window.location.search.substr(10);
 
     FormView.initialize();
@@ -14,28 +13,35 @@ var App = {
 
     // Fetch initial batch of messages
     App.startSpinner();
-    App.fetch(App.stopSpinner);
+    App.fetch(this.stopSpinner);
 
     $('.username').click(Friends.toggleStatus());
 
   },
 
-  fetch: function(callback = ()=>{}) {
+  fetch: (callback = ()=>{}) => {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      console.log(data);
+      console.log('HERE', data);
+      for (let message of data.results) {
+        if (message.username === undefined || message.text === '') {
+          continue;
+        }
+        MessagesView.renderMessage(message);
+      }
 
       callback();
     });
   },
 
-  startSpinner: function() {
+  startSpinner: () => {
     App.$spinner.show();
     FormView.setStatus(true);
   },
 
-  stopSpinner: function() {
+  stopSpinner: () => {
     App.$spinner.fadeOut('fast');
     FormView.setStatus(false);
   }
+
 };
