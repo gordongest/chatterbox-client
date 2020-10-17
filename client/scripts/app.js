@@ -48,8 +48,8 @@ var App = {
           MessagesView.renderMessage(message);
         }
       }
-      Friends.toggleStatus();
       callback();
+      Friends.toggleStatus();
     });
   },
 
