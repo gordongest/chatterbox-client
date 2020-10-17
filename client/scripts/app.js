@@ -36,13 +36,12 @@ var App = {
         if (message.roomname) {
           RoomsView.renderRoom(message.roomname);
         }
-        var targetRoomname = $('select').options[$().selectedIndex].text;
-        console.log(targetRoomname);
-        if (message.roomname === targetRoomname || targetRoomname === 'lobby' || !targetRoomname) {
-          MessagesView.renderMessage(message);
-        // var e = document.getElementById("ddlViewBy");
-        // var strUser = e.options[e.selectedIndex].text;
-        }
+        // var targetRoomname = $('select option:selected').text();
+        // console.log(targetRoomname);
+        // if (message.roomname === targetRoomname || targetRoomname === 'lobby' || !targetRoomname) {
+        MessagesView.renderMessage(message);
+        //   // $("#elementId :selected").text();
+        // }
       }
       Friends.toggleStatus();
       callback();
@@ -60,10 +59,3 @@ var App = {
   }
 
 };
-
-
-
-$('select').on('change', (room = 'lobby') => {
-  var selectedVal = $(this).find(':selected').val();
-  var selectedText = $(this).find(':selected').text();
-});

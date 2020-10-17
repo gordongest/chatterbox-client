@@ -4,7 +4,6 @@ var Rooms = {
     $('#rooms button').on('click', function() {
       var text = prompt('Enter room name here');
       if (text) {
-        console.log(text); // for example I've made an alert
         RoomsView.renderRoom(text);
       }
     });
@@ -12,8 +11,8 @@ var Rooms = {
 
   select: function() {
     $('select').on('change', () => {
-      var selectedVal = $(this).find(':selected').val();
-      alert(selectedVal);
+      var targetRoomName = $('select option:selected').text();
+      alert(targetRoomName);
     });
   }
 

@@ -13,10 +13,10 @@ var FormView = {
     var message = {
       username: App.username,
       text: $('#message').val(),
-      room: 'lobby'
+      roomname: $('select option:selected').text()
     };
     $('.submit').click(Parse.create(message));
-    console.log('click!');
+    console.log(message);
     $('#chats').empty();
     App.fetch();
   },
