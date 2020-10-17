@@ -17,7 +17,6 @@ var FormView = {
     };
     $('.submit').on('click', () => {
       Parse.create(message);
-      $('#message').empty();
       App.fetch();
     });
   },

@@ -19,15 +19,14 @@ var App = {
     // $('.username').on('click', Friends.toggleStatus());
 
     setInterval(function() {
-      $('#chats').empty();
       App.startSpinner();
       App.fetch(App.stopSpinner);
     }, 15000);
 
   },
 
-  fetch: (callback = ()=>{}) => {
-
+  fetch: (callback = ()=>{}, room) => {
+    $('#chats').empty();
     Parse.readAll((data) => {
       for (let message of data.results) {
         if (message.username === undefined || message.text === '') {
@@ -36,14 +35,18 @@ var App = {
         if (message.roomname) {
           if (!RoomsView.roomsList.includes(message.roomname)) {
             RoomsView.renderRoom(message.roomname);
+            RoomsView.roomsList.push(message.roomname);
           }
         }
-        // var targetRoomname = $('select option:selected').text();
-        // console.log(targetRoomname);
-        // if (message.roomname === targetRoomname || targetRoomname === 'lobby' || !targetRoomname) {
-        MessagesView.renderMessage(message);
-        //   // $("#elementId :selected").text();
-        // }
+        // console.log({room}, message.roomname);
+        if (room) {
+          if (message.roomname === room) {
+            console.log('yurp');
+            MessagesView.renderMessage(message);
+          }
+        } else {
+          MessagesView.renderMessage(message);
+        }
       }
       Friends.toggleStatus();
       callback();
