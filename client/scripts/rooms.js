@@ -12,7 +12,7 @@ var Rooms = {
   select: function() {
     $('select').on('change', () => {
       var targetRoomName = $('select option:selected').text();
-      alert(targetRoomName);
+      // alert(targetRoomName);
     });
   }
 

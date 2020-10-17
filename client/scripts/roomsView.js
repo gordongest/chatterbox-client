@@ -19,6 +19,7 @@ var RoomsView = {
     $(renderedRoom).appendTo(RoomsView.$select);
   },
 
+  roomsList: []
 
 };
 

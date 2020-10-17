@@ -34,7 +34,9 @@ var App = {
           continue;
         }
         if (message.roomname) {
-          RoomsView.renderRoom(message.roomname);
+          if (!RoomsView.roomsList.includes(message.roomname)) {
+            RoomsView.renderRoom(message.roomname);
+          }
         }
         // var targetRoomname = $('select option:selected').text();
         // console.log(targetRoomname);
