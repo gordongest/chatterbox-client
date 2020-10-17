@@ -1,7 +1,7 @@
 var App = {
 
   $spinner: $('.spinner img'),
-  username: 'gerf',
+  username: 'anonymous',
 
   initialize: () => {
     App.username = window.location.search.substr(10);
@@ -10,16 +10,24 @@ var App = {
     RoomsView.initialize();
     MessagesView.initialize();
     Friends.initialize();
+    // Rooms.select();
 
     // Fetch initial batch of messages
     App.startSpinner();
-    App.fetch(this.stopSpinner);
+    App.fetch(App.stopSpinner);
 
-    $('.username').click(Friends.toggleStatus());
+    // $('.username').on('click', Friends.toggleStatus());
+
+    setInterval(function() {
+      $('#chats').empty();
+      App.startSpinner();
+      App.fetch(App.stopSpinner);
+    }, 30000);
 
   },
 
   fetch: (callback = ()=>{}) => {
+
     Parse.readAll((data) => {
       // examine the response from the server request:
       console.log('HERE', data);
@@ -28,8 +36,11 @@ var App = {
           continue;
         }
         MessagesView.renderMessage(message);
+        if (message.roomname) {
+          RoomsView.renderRoom(message.roomname);
+        }
       }
-
+      Friends.toggleStatus();
       callback();
     });
   },
@@ -45,3 +56,10 @@ var App = {
   }
 
 };
+
+
+
+$('select').on('change', (room = 'lobby') => {
+  var selectedVal = $(this).find(':selected').val();
+  var selectedText = $(this).find(':selected').text();
+});

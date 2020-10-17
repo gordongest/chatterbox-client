@@ -4,7 +4,8 @@ var RoomsView = {
   $select: $('#rooms select'),
 
   initialize: function() {
-    $('#rooms button').click(Rooms.add());
+    RoomsView.$button.on('click', Rooms.add(/* pass in a .val() here? */));
+    Rooms.select();
   },
 
   render: _.template(`
@@ -19,3 +20,4 @@ var RoomsView = {
 
 };
 
+// Rooms.add(/* pass in a .val() here? */)

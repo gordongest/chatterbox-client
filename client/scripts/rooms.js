@@ -1,7 +1,14 @@
 var Rooms = {
 
   add: function() {
-    // todo
+
+  },
+
+  select: function() {
+    $('select').on('change', () => {
+      var selectedVal = $(this).find(':selected').val();
+      alert(selectedVal);
+    });
   }
 
 };

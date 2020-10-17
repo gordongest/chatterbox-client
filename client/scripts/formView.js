@@ -9,8 +9,16 @@ var FormView = {
   handleSubmit: (event) => {
     // Stop the browser from submitting the form
     event.preventDefault();
-    $('.submit').click(Parse.create());
+    var text = $('#message').val();
+    var message = {
+      username: App.username,
+      text: $('#message').val(),
+      room: 'lobby'
+    };
+    $('.submit').click(Parse.create(message));
     console.log('click!');
+    $('#chats').empty();
+    App.fetch();
   },
 
   setStatus: (active) => {
