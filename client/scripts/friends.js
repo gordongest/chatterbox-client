@@ -17,6 +17,7 @@ var Friends = {
       } else {
         Friends.friendsList.splice(Friends.friendsList.indexOf($username), 1);
       }
+
       console.log(Friends.friendsList);
     });
   },

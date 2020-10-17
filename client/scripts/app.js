@@ -22,22 +22,26 @@ var App = {
       $('#chats').empty();
       App.startSpinner();
       App.fetch(App.stopSpinner);
-    }, 30000);
+    }, 15000);
 
   },
 
   fetch: (callback = ()=>{}) => {
 
     Parse.readAll((data) => {
-      // examine the response from the server request:
-      console.log('HERE', data);
       for (let message of data.results) {
         if (message.username === undefined || message.text === '') {
           continue;
         }
-        MessagesView.renderMessage(message);
         if (message.roomname) {
           RoomsView.renderRoom(message.roomname);
+        }
+        var targetRoomname = $('select').options[$().selectedIndex].text;
+        console.log(targetRoomname);
+        if (message.roomname === targetRoomname || targetRoomname === 'lobby' || !targetRoomname) {
+          MessagesView.renderMessage(message);
+        // var e = document.getElementById("ddlViewBy");
+        // var strUser = e.options[e.selectedIndex].text;
         }
       }
       Friends.toggleStatus();
