@@ -10,13 +10,10 @@ var App = {
     RoomsView.initialize();
     MessagesView.initialize();
     Friends.initialize();
-    // Rooms.select();
 
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
-
-    // $('.username').on('click', Friends.toggleStatus());
 
     setInterval(function() {
       App.startSpinner();
@@ -38,7 +35,7 @@ var App = {
             RoomsView.roomsList.push(message.roomname);
           }
         }
-        // console.log({room}, message.roomname);
+
         if (room) {
           if (message.roomname === room) {
             console.log('yurp');

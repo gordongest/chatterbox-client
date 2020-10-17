@@ -22,5 +22,3 @@ var RoomsView = {
   roomsList: []
 
 };
-
-// Rooms.add(/* pass in a .val() here? */)
